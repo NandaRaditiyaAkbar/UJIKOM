@@ -72,7 +72,9 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataobat = DB::table('obat')->where('id','=',$id)->first();
+        // $dataobat = Obat::find($id);
+        return view('backend/editobat', compact('dataobat'));
     }
 
     /**
@@ -84,7 +86,13 @@ class ObatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataobat = DB::table('obat')->where('id','=',$id);
+        $dataobat->update([
+            'nama_obat'=>$request->nama_obat,
+            'jml_obat'=>$request->jml_obat,
+            'hrg_obat'=>$request->hrg_obat,
+        ]);
+        return redirect('dataobat');
     }
 
     /**
@@ -95,6 +103,9 @@ class ObatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataobat = DB::table('obat')->where('id','=',$id);
+        // $dataobat = Data::find($id);
+        $dataobat->delete();
+        return redirect()->back();
     }
 }

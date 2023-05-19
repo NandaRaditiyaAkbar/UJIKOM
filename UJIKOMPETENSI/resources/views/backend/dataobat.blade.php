@@ -14,6 +14,7 @@
                         <th>Nama Obat</th>
                         <th>Jumlah</th>
                         <th>Harga</th>
+                        <th colspan="2" class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,16 @@
                         <td>{{$data->nama_obat}}</td>
                         <td>{{$data->jml_obat}}</td>
                         <td>{{$data->hrg_obat}}</td>
+                        <td class="text-center">
+                            <a href="{{route('editobat',$data->id)}}" type="button" class="btn btn-warning">Edit</a>
+                        </td>
+                        <td class="text-center">
+                            <form action="{{ route('deleteobat', $data->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
+                        </td>
+
                     </tr>
                     @endforeach
                 </tbody>

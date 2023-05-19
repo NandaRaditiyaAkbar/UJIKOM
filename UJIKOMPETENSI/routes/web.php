@@ -31,6 +31,11 @@ Route::post('/keluarlogout', [LoginController::class, 'logout'])->name('keluarlo
 Route::get('/dataobat', [ObatController::class, 'index'])->name('dataobat');
 Route::get('/tambahobat', [ObatController::class, 'tambahobat'])->name('tambahobat');
 Route::post('/prosestambahobat', [ObatController::class, 'store'])->name('prosestambahobat');
+Route::get('/editobat/{id}', [ObatController::class, 'edit'])->name('editobat');
+Route::post('/updateobat/{id}', [ObatController::class, 'update'])->name('updateobat');
+Route::post('/deleteobat/{id}', [ObatController::class, 'destroy'])->name('deleteobat');
+
+
 Auth::routes();
 
 
