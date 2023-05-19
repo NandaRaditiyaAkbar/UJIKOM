@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LoginController;
+use App\Http\Controllers\Backend\ObatController;
 use App\Http\Controllers\Backend\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::post('/prosesregistrasi', [RegisterController::class, 'registrasi'])->nam
 Route::get('/masukLogin', [LoginController::class, 'index'])->name('masuklogin');
 Route::post('/authenticate', [LoginController::class, 'masukLogin'])->name('masukLogin');
 Route::post('/keluarlogout', [LoginController::class, 'logout'])->name('keluarlogout');
+Route::get('/dataobat', [ObatController::class, 'index'])->name('dataobat');
+Route::get('/tambahobat', [ObatController::class, 'tambahobat'])->name('tambahobat');
+Route::post('/prosestambahobat', [ObatController::class, 'store'])->name('prosestambahobat');
 Auth::routes();
 
 
