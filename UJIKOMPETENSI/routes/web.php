@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\LoginController;
+use App\Http\Controllers\Backend\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backend/login');
 });
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+Route::get('/daftar', [RegisterController::class, 'index'])->name('register');
+Route::post('/prosesregistrasi', [RegisterController::class, 'registrasi'])->name('registrasi');
+Route::get('/masukLogin', [LoginController::class, 'index'])->name('masuklogin');
+Route::post('/authenticate', [LoginController::class, 'masukLogin'])->name('masukLogin');
+Route::post('/keluarlogout', [LoginController::class, 'logout'])->name('keluarlogout');
 Auth::routes();
 
 
