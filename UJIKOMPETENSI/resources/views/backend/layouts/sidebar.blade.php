@@ -36,8 +36,15 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Kelola Data:</h6>
-                        <a class="collapse-item" href="{{route('dataobat')}}">Data Obat</a>
-                        <a class="collapse-item" href="cards.html">Data Pengguna</a>
+                        @if (auth()->user()->level == "admin")
+                        <a class="collapse-item" href="{{route('datapenulis')}}">Daftar Penulis</a>
+                        <a class="collapse-item" href="{{route('daftarartikel')}}">Daftar Artikel</a>
+                        <a class="collapse-item" href="{{route('daftarkomentar')}}">Daftar Komentar</a>
+                        @endif
+                        @if (auth()->user()->level == "penulis")
+                        <a class="collapse-item" href="{{route('dataartikel')}}">Data Artikel</a>
+                        <a class="collapse-item" href="{{route('daftarkomentarpenulis')}}">Data Komentar</a>
+                        @endif
                     </div>
                 </div>
             </li>

@@ -22,13 +22,19 @@ class LoginController extends Controller
     {
         request()->validate(
             [
-                'email'=>'required|email:dns',
+                'username'=>'required',
                 'password'=>'required',
             ]);
-        $kredensil = $request->only('email','password');
+        $kredensil = $request->only('username','password');
 
         if (Auth::attempt($kredensil)) {
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+            if ($user->level == 'admin') {
+                return redirect()->intended('dashboard');
+            }elseif ($user->level == 'penulis') {
+                return redirect()->intended('dashboardpenulis');
+            }
+            // return redirect()->intended('masuklogin');
         }
         return back()->with('loginError', 'Email atau Password Anda Salah !!!');
     }

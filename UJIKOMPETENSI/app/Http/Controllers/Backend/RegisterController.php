@@ -23,14 +23,13 @@ class RegisterController extends Controller
         //dd($request->all());
 
         $validateData = $request->validate([
-            'name' => 'required|max:32',
-            'email' => 'required|email|unique:users',
+            'username' => 'required|max:32',
             'password' => 'required|min:4|max:8' 
 
         ]);
         /* $validateData['password'] = bcrypt($validateData['password']); */
         $validateData['password'] = Hash::make($validateData['password']);
-        // $validateData['level'] = 'wali';
+        $validateData['level'] = 'penulis';
 
         User::create($validateData);
 

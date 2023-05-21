@@ -37,10 +37,7 @@
                             <form class="user" action="{{route('registrasi')}}" method="post">
                                 {{ csrf_field()}}
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" name="email">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nama" name="username">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
